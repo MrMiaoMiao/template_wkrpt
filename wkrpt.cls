@@ -92,27 +92,48 @@
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.95}
- 
+
 \lstdefinestyle{codeblock}{
-    backgroundcolor=\color{backcolour},   
+    backgroundcolor=\color{backcolour},
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
+    numberstyle=\color{codegray},
     stringstyle=\color{codepurple},
-    basicstyle=\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
+    breakatwhitespace=false,
+    breaklines=true,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
     showstringspaces=false,
-    showtabs=false,                  
+    showtabs=false,
     tabsize=2
 }
- 
-\lstset{style=codeblock}
+
+\lstdefinelanguage{json}{
+    morestring=*[d]{"},
+    stringstyle=\color{codegreen},
+    literate=
+     *{0}{{{\color{codegray}0}}}{1}
+      {1}{{{\color{codegray}1}}}{1}
+      {2}{{{\color{codegray}2}}}{1}
+      {3}{{{\color{codegray}3}}}{1}
+      {4}{{{\color{codegray}4}}}{1}
+      {5}{{{\color{codegray}5}}}{1}
+      {6}{{{\color{codegray}6}}}{1}
+      {7}{{{\color{codegray}7}}}{1}
+      {8}{{{\color{codegray}8}}}{1}
+      {9}{{{\color{codegray}9}}}{1}
+      {:}{{{\color{magenta}{:}}}}{1}
+      {,}{{{\color{magenta}{,}}}}{1}
+      {\{}{{{\color{codepurple}{\{}}}}{1}
+      {\}}{{{\color{codepurple}{\}}}}}{1}
+      {[}{{{\color{codepurple}{[}}}}{1}
+      {]}{{{\color{codepurple}{]}}}}{1},
+}
+
+\RequirePackage{float}
+\RequirePackage[belowskip=-20pt,aboveskip=5pt,format=plain,font={small,it}]{caption}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Class definition                                                           %%
@@ -416,7 +437,7 @@
 \newcommand{\summary}{
     % Summary 1.5 spacing
     \onehalfspacing
-    \section*{Summary}
+    \section*{Executive Summary}
 }
 \newcommand{\body}{
     \clearpage
@@ -433,9 +454,11 @@
 }
 
 \newcommand{\pcite}{
-	% alias for citations (with parenthesis)
-	\parencite
+    % alias for citations (with parenthesis)
+    \parencite
 }
+
+\newcommand{\code}[1]{\colorbox{backcolour}{\texttt{#1}}}
 
 \makeatletter
 
@@ -452,5 +475,10 @@
   \let\parentext=\parentexttrack}
 
 \makeatother
+
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 
 %% end of file `wkrpt.cls'.
